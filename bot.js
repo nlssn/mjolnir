@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 const { exec } = require('child_process');
-const { client } = require('discord.js');
+const { Client } = require('discord.js');
+const client = new Client();
 const PREFIX = '!';
 
 client.on('ready', () => {
