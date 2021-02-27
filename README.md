@@ -1,9 +1,9 @@
 # Mjölnir
 
-A Discord bot that let's you start, stop and restart a Valheim server. It's basically just a way to access LGSM (Linux Game Server Managers) scripts trough Discord.
+A Discord bot that let's you start, stop and restart a Valheim server. It's basically just a way to access LinuxGSM_ (Linux Game Server Managers) scripts trough Discord.
 
 ## Requirements
-This bot relies on your Valheim server being installed using (LinuxGSM_)[https://linuxgsm.com]. The bot uses predefined LGSM scripts to execute it's commands.
+This bot relies on your Valheim server being installed using [LinuxGSM_](https://linuxgsm.com). The bot uses LGSM scripts to execute it's commands.
 
 You also need NodeJS and NPM installed.
 # Installation
@@ -16,7 +16,7 @@ cd gh-mjolnir
 npm install
 ```
 2. To be able to connect to a Discord server via DiscordJS you will need a bot token.
-(Here's a guide)[#0] on how to get a token.
+[Here's a guide](#0) on how to get a token.
 
 Add a .env-file and store your Discord API-key as the variable `DISCORD_TOKEN`. Your file will look something like this:
 ```
@@ -42,4 +42,4 @@ _NOTE! The default prefix is !. The prefix must be used before the command for i
 * [ ] Add info command (prints server IP, player count, etc.)
 
 ## Problems / Suggestions
-If you have any problems or suggestions for features, please post them (here)[https://github.com/nlssn/gh-mjolnir/issues].
+If you have any problems or suggestions for features, please post them [here](https://github.com/nlssn/gh-mjolnir/issues).
