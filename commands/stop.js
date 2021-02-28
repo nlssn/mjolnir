@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 
 module.exports = {
-   name: 'start',
+   name: 'stop',
    description: 'Stops the Valheim server',
    execute(message, args) {
       message.channel.send("Stopping the server! :skull:");
