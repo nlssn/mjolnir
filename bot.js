@@ -1,9 +1,20 @@
-require('dotenv').config();
-
+const fs = require('fs');
 const { exec } = require('child_process');
-const { Client } = require('discord.js');
-const client = new Client();
+const { Client, Collection } = require('discord.js');
+
 const { prefix, token } = require('./config.json');
+
+const client = new Client();
+
+client.commands = new Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+   const command = require(`./commands/${file}`);
+   client.commands.set(command.name, command)
+}
+
 
 client.on('ready', () => {
    console.log(`${client.user.tag} is ready.`);
@@ -34,19 +45,6 @@ client.on('message', message => {
 });
 
 client.login(token);
-
-
-function start() {
-   const startScript = exec('.././vhserver start');
-
-   startScript.stdout.on('data', data => {
-      console.log(data);
-   });
-   
-   startScript.stderr.on('data', data => {
-      console.error(data);
-   });
-}
 
 function stop() {
    const stopScript = exec('.././vhserver stop');
