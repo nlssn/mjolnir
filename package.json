@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon bot.js",
-    "start": "node bot.js"
+    "start": "forever start bot.js",
+    "stop": "forever stop bot.js"
   },
   "author": "Johannes Nilsson",
   "license": "ISC",
