@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { exec } = require('child_process');
 const { Client, Collection } = require('discord.js');
 
 const { prefix, token } = require('./config.json');
