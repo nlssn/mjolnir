@@ -14,11 +14,6 @@ for (const file of commandFiles) {
    client.commands.set(command.name, command)
 }
 
-
-client.on('ready', () => {
-   console.log(`${client.user.tag} is ready.`);
-});
-
 client.on('message', message => {
    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
