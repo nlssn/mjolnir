@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { Client, Collection } = require('discord.js');
 
-const { prefix, token } = require('./config.json');
+const { prefix, token, required_role } = require('./config.json');
 
 const client = new Client();
 
@@ -21,6 +21,12 @@ client.on('ready', () => {
 
 client.on('message', message => {
    if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+   // If there's a required role, check that the user sending the command has that role
+   if (required_role.use && !message.member.roles.cache.some(role => role.name === required_role.name)) {
+      message.reply(`Sorry, you don't have the right privileges to use Mjölnir.`);
+      return;
+   }
 
    const args = message.content.slice(prefix.length).trim().split(/ +/);
    const commandName = args.shift().toLowerCase();

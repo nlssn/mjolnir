@@ -1,5 +1,8 @@
 {
    "prefix": "!",
    "token": "",
-   "required_role": "trusted"
+   "required_role": {
+      "use": true,
+      "name": "trusted"
+   }
 }
