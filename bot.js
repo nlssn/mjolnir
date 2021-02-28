@@ -23,49 +23,17 @@ client.on('ready', () => {
 client.on('message', message => {
    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-   const [cmd, ...args] = message.content
-      .trim()
-      .substring(PREFIX.length)
-      .split(/\s+/);
-      
-   if(cmd === 'start') {
-      message.channel.send("Starting the server! Get ready :crossed_swords:");
-      start();
-   }
+   const args = message.content.slice(prefix.length).trim().split(/ +/);
+   const commandName = args.shift().toLowerCase();
+   
+   if (!client.commands.has(commandName)) return;
 
-   if(cmd === 'stop') {
-      message.channel.send("Stopping the server! :skull:");
-      stop();
-   }
-
-   if(cmd === 'restart') {
-      message.channel.send("Restarting the server! Go grab a snack while you wait :meat_on_bone:");
-      restart();
+   try {
+      client.commands.get(command).execute(message, args);
+   } catch (error) {
+      console.error(error);
+      message.reply('There was an error trying to execute that command!');
    }
 });
 
 client.login(token);
-
-function stop() {
-   const stopScript = exec('.././vhserver stop');
-
-   stopScript.stdout.on('data', data => {
-      console.log(data);
-   });
-
-   stopScript.stderr.on('data', data => {
-      console.error(data);
-   });
-}
-
-function restart() {
-   const restartScript = exec('.././vhserver restart');
-
-   restartScript.stdout.on('data', data => {
-      console.log(data);
-   });
-
-   restartScript.stderr.on('data', data => {
-      console.error(data);
-   });
-}
