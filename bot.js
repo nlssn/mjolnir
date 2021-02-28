@@ -14,6 +14,19 @@ for (const file of commandFiles) {
    client.commands.set(command.name, command)
 }
 
+// Load event files
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+// Handle events depending on their method (once, on)
+for (const file of eventFiles) {
+   const event = require(`./events/${file}`);
+   if (event.once) {
+      client.once(event.name, (...args) => event.execute(...args, client));
+   } else {
+      client.on(event.name, (...args) => event.execute(...args, client));
+   }
+}
+
 client.on('message', message => {
    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
