@@ -1,9 +1,0 @@
-{
-   "server_name": "My Valheim Server",
-   "prefix": "!",
-   "token": "a_long_string_with_rand0m_characters",
-   "required_role": {
-      "use": true,
-      "name": "trusted"
-   }
-}
