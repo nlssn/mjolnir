@@ -1,20 +1,20 @@
 {
-  "name": "gh-mjolnir",
+  "name": "mjolnir",
   "version": "1.0.0",
   "description": "A Discord bot for interacting with lgsm-vhserver",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon bot.js",
-    "start": "forever start bot.js",
-    "stop": "forever stop bot.js"
+    "dev": "nodemon src/index.js",
+    "start": "pm2 start src/index.js",
+    "stop": "pm2 delete src/index.js"
   },
   "author": "Johannes Nilsson",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
   "dependencies": {
-    "discord.js": "^12.5.1",
-    "forever": "^3.0.4"
+    "discord.js": "^13.2.0",
+    "pm2": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
